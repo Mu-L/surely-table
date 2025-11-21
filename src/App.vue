@@ -70,6 +70,7 @@ export default defineComponent({
         isZhCN.value = zh;
         localStorage.setItem('en-US', !zh ? 'true' : '');
       },
+      t: i18n.t,
     };
     const changeTheme = (t: ThemeName) => {
       theme.value = t;
@@ -101,8 +102,10 @@ export default defineComponent({
       val => {
         if (val) {
           dayjs.locale(zhCN.locale);
+          i18n.locale.value = 'zh-CN';
         } else {
           dayjs.locale(enUS.locale);
+          i18n.locale.value = 'en-US';
         }
       },
       { immediate: true },

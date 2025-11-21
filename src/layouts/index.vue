@@ -1,8 +1,8 @@
 <template>
   <transition name="slide-fade" appear>
     <div v-if="show" class="discount">
-      早早鸟 + 双十二，5 折特惠，仅此一次，
-      <a href="javascript:;" @click="handleClick">即刻上车</a>
+      {{ t('app.banner.text') }}
+      <a href="javascript:;" @click="handleClick">{{ t('app.banner.link') }}</a>
     </div>
   </transition>
   <a-layout class="layout">
@@ -107,6 +107,7 @@ export default defineComponent({
       }, 1000);
     }
     return {
+      t: globalConfig.t,
       show,
       demos,
       visible,

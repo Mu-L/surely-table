@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="markdown">
+    <div v-if="isZhCN" class="markdown">
       <h3>
         拖拽是一个很酷的功能，但你要知道当用户刷新或重新获取数据后，状态会被重置，除非你做了相应的缓存
       </h3>
@@ -24,6 +24,12 @@
         <li>`2.5.4` 版本后新增 dataSource、columns 的双向绑定，避免状态被重置</li>
       </ul>
     </div>
+    <div v-else class="markdown">
+      <h3>
+        Drag and drop is a cool feature, but you should know that the state will be reset when the
+        user refreshes or re-fetches data, unless you cache it accordingly.
+      </h3>
+    </div>
     <br />
     <columns />
     <drag-row-vue />
@@ -35,6 +41,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useInjectGlobalConfig } from '../../context';
 import Columns from './columns.vue';
 import dragRowVue from './drag-row.vue';
 import dragPromiseVue from './drag-promise.vue';
@@ -93,7 +100,10 @@ export default defineComponent({
     },
   ],
   setup() {
-    return {};
+    const globalConfig = useInjectGlobalConfig();
+    return {
+      isZhCN: globalConfig.isZhCN,
+    };
   },
 });
 </script>

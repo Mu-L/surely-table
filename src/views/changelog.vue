@@ -1,17 +1,28 @@
 <template>
-  <changelog />
+  <template v-if="isZhCN">
+    <changelog-zh-c-n />
+  </template>
+  <template v-else>
+    <changelog-en-u-s />
+  </template>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import changelog from '../../CHANGELOG.zh-CN.md';
+import changelogZhCN from '../../CHANGELOG.zh-CN.md';
+import changelogEnUS from '../../CHANGELOG.en-US.md';
+import { useInjectGlobalConfig } from '../context';
 
 export default defineComponent({
   name: '',
   components: {
-    changelog,
+    changelogZhCN,
+    changelogEnUS,
   },
   setup() {
-    return {};
+    const globalConfig = useInjectGlobalConfig();
+    return {
+      isZhCN: globalConfig.isZhCN,
+    };
   },
 });
 </script>

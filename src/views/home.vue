@@ -4,15 +4,15 @@
       <img :src="logo" alt="" class="logo" />
       <div class="right">
         <div class="tagline">
-          <span>高性能组件&nbsp;</span>
+          <span>{{ t('app.home.title') }}&nbsp;</span>
           <span>Surely Vue</span>
         </div>
-        <div class="sub-title">构建更快的网站 & 更快的构建网站</div>
+        <div class="sub-title">{{ t('app.home.sub-title') }}</div>
         <div class="actions">
           <router-link to="/doc/guide">
             <a-button type="primary" class="btn" size="large">
               <span class="btn-icon"></span>
-              开始使用
+              {{ t('app.home.start') }}
             </a-button>
           </router-link>
           <a-button
@@ -32,7 +32,8 @@
         </div>
       </div>
     </div>
-    <basic-demo-vue style="margin-top: 30px"></basic-demo-vue>
+    <basic-demo-vue v-if="isZhCN" style="margin-top: 30px"></basic-demo-vue>
+    <basic-demo-en-vue v-else style="margin-top: 30px"></basic-demo-en-vue>
     <div>
       <feature-vue />
     </div>
@@ -40,7 +41,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { useInjectGlobalConfig } from '../context';
 import basicDemoVue from '../components/home/basic-demo.vue';
+import basicDemoEnVue from '../components/home/basic-demo-en.vue';
 import logo from '../assets/surely-vue-logo.svg';
 import { CheckOutlined, SnippetsOutlined } from '@ant-design/icons-vue';
 import featureVue from '../components/home/feature.vue';
@@ -48,6 +51,7 @@ import liveDemoVue from '../components/home/live-demo.vue';
 export default defineComponent({
   components: {
     basicDemoVue,
+    basicDemoEnVue,
     CheckOutlined,
     SnippetsOutlined,
     featureVue,
@@ -55,7 +59,10 @@ export default defineComponent({
   },
   setup() {
     const copied = ref(false);
+    const { t, isZhCN } = useInjectGlobalConfig();
     return {
+      t,
+      isZhCN,
       logo,
       copied,
       handleCopy: () => {

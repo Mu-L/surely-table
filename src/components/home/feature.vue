@@ -1,55 +1,43 @@
 <template>
   <div class="lay flex" style="padding: 50px">
-    <div class="rounded-lg p-8">
+    <div class="flex-1 rounded-md p-8">
       <div class="title">
         <span class="icon"></span>
         <span class="highlight">F</span>
         <span>aster</span>
-        更快
+        {{ t('app.home.features.virtual-scroll') }}
       </div>
       <div class="info">
-        流畅渲染百万级别数据
-        <br />
-        横向纵向虚拟滚动
-        <br />
-        最省心的优化
+        {{ t('app.home.features.virtual-scroll.desc') }}
       </div>
     </div>
-    <div class="rounded-md p-8">
+    <div class="flex-1 rounded-md p-8">
       <div class="title">
         <span class="icon"></span>
         <span class="highlight">S</span>
         <span>tronger</span>
-        更强
+        {{ t('app.home.features.drag-drop') }}
       </div>
       <div class="info">
-        集成拖拽、图表、CRUD
-        <br />
-        暗黑主题、导入导出
-        <br />
-        快速构建应用
+        {{ t('app.home.features.drag-drop.desc') }}
       </div>
     </div>
-    <div class="rounded-md p-8">
+    <div class="flex-1 rounded-md p-8">
       <div class="title">
         <span class="icon"></span>
         <span class="highlight">E</span>
         <span>asier</span>
-        更易用
+        {{ t('app.home.features.theme') }}
       </div>
       <div class="info">
-        完整 Typescript 类型
-        <br />
-        丰富的在线示例
-        <br />
-        So Easy
+        {{ t('app.home.features.theme.desc') }}
       </div>
     </div>
   </div>
   <div class="rec">
     <div class="rec-inner lay flex">
       <div class="left">
-        <div class="rec-word mt-5">CXO & 大厂技术专家联袂推荐</div>
+        <div class="rec-word mt-5">{{ t('app.home.recommend') }}</div>
         <div>
           <br />
           <a-button
@@ -71,7 +59,7 @@
           <router-link to="/doc/guide">
             <a-button type="primary" class="btn mt-5" size="large">
               <span class="btn-icon"></span>
-              开始使用
+              {{ t('app.home.start') }}
             </a-button>
           </router-link>
         </div>
@@ -91,14 +79,12 @@
           <div class="card">
             <a-card :bordered="false" class="!shadow-none">
               <template #cover>
-                <div class="desc">
-                  Ant Design Vue 加快了我们交付产品的速度和质量，给我们节省了每年约 300
-                  万的人力投入， 而且我们可以比竞争对手更快地为客户提供产品，它带来的价值更加可观。
-                  大数据表格一直是一个痛点，分页已经无法满足日渐“挑剔”的用户，Surely Vue
-                  很好地解决了这个问题，非常感谢 Ant Design Vue 不断地付出和维护。
-                </div>
+                <div class="desc" v-html="t('app.home.testimonials.humiao.desc')"></div>
               </template>
-              <a-card-meta title="胡淼" description="校宝在线 副总裁（VP）">
+              <a-card-meta
+                :title="t('app.home.testimonials.humiao.title')"
+                :description="t('app.home.testimonials.humiao.description')"
+              >
                 <template #avatar>
                   <a-avatar :src="humiao" />
                 </template>
@@ -108,16 +94,12 @@
           <div class="card">
             <a-card :bordered="false">
               <template #cover>
-                <div class="desc">
-                  Surely Vue
-                  是国内领先的前端数据表格解决方案，在性能，扩展性，易用性等方面在全球属于领先水平，对于中大型企业或者小微企业的SaaS或者PaaS系统的落地起到了核心作用。
-                  <br />
-                  作为首批内测者，从体验使用到源码阅读，我感受到了「唐金州」老师的专注与专业，期待
-                  Surely Vue
-                  能帮助更多的工程师快速交付具有商业价值的创新产品，帮助更多企业高效高质量完成数字化建设。
-                </div>
+                <div class="desc" v-html="t('app.home.testimonials.zhangchi.desc')"></div>
               </template>
-              <a-card-meta title="张驰" description="LlamaGen.Ai 创始人 & CEO">
+              <a-card-meta
+                :title="t('app.home.testimonials.zhangchi.title')"
+                :description="t('app.home.testimonials.zhangchi.description')"
+              >
                 <template #avatar>
                   <a-avatar :src="zhangchi" />
                 </template>
@@ -127,14 +109,12 @@
           <div class="card">
             <a-card :bordered="false">
               <template #cover>
-                <div class="desc">
-                  Surely Vue 不管是 UI 还是交互，都保持了 Ant Design
-                  的设计体系，同时还添加了更多动画，进一步提升了用户体验，持续的投入会带来更专业的方案。
-                  国内的开源商业化发展非常缓慢，而前端更是在起步阶段，很欣慰看到 Ant Design Vue
-                  正在摸索新的商业模式，也帮各位前端人探明了一个更好的职业金矿，继续加油，非常期待。
-                </div>
+                <div class="desc" v-html="t('app.home.testimonials.scott.desc')"></div>
               </template>
-              <a-card-meta title="Scott" description="早早聊 CEO">
+              <a-card-meta
+                :title="t('app.home.testimonials.scott.title')"
+                :description="t('app.home.testimonials.scott.description')"
+              >
                 <template #avatar>
                   <a-avatar :src="scott" />
                 </template>
@@ -144,15 +124,12 @@
           <div class="card">
             <a-card :bordered="false">
               <template #cover>
-                <div class="desc">
-                  Ant Design Vue 的新作品 Surely Vue 真的很
-                  Cool，这是迄今为止我见过滚动最流畅的复杂表格组件，
-                  有幸拜读过源码，真的很开眼界，可以说把 Vue 的性能“压榨”到了极致。
-                  <br />
-                  不管怎么说，期待 Surely Vue 带来更多的功能。
-                </div>
+                <div class="desc" v-html="t('app.home.testimonials.dasheng.desc')"></div>
               </template>
-              <a-card-meta title="大圣" description="前百度前端架构师 & 自由职业者">
+              <a-card-meta
+                :title="t('app.home.testimonials.dasheng.title')"
+                :description="t('app.home.testimonials.dasheng.description')"
+              >
                 <template #avatar>
                   <a-avatar :src="dasheng" />
                 </template>
@@ -162,14 +139,12 @@
           <div class="card">
             <a-card :bordered="false">
               <template #cover>
-                <div class="desc">
-                  你应该试试它，安装后，使用 s-table 替换
-                  a-table，几乎零成本的替换，你会发现网站速度快了很多不是嘛。
-                  <br />
-                  或许你更应该告诉你的老板，我们可以给客户提供更好的用户体验，然后我们会有更多的客户。
-                </div>
+                <div class="desc" v-html="t('app.home.testimonials.liangxiao.desc')"></div>
               </template>
-              <a-card-meta title="梁宵" description="快手 资深技术专家">
+              <a-card-meta
+                :title="t('app.home.testimonials.liangxiao.title')"
+                :description="t('app.home.testimonials.liangxiao.description')"
+              >
                 <template #avatar>
                   <a-avatar :src="liangxiao" />
                 </template>
@@ -179,16 +154,12 @@
           <div class="card">
             <a-card :bordered="false">
               <template #cover>
-                <div class="desc">
-                  Surely Vue
-                  真是一个难产的项目，很早就被邀请内测，从最初的卡顿、略卡、微卡、到如今的流畅滚动，算是见证了它的成长，
-                  而且结果看起来非常的棒。
-                  <br />
-                  作为内测者，感受到团队投入了非常大的精力，不断地调整方案，不断的优化性能，这大概就是专业吧。与其说信任
-                  Surely Vue，我更加信任背后的人。
-                </div>
+                <div class="desc" v-html="t('app.home.testimonials.guomeiqing.desc')"></div>
               </template>
-              <a-card-meta title="郭美青" description="腾讯 资深技术专家">
+              <a-card-meta
+                :title="t('app.home.testimonials.guomeiqing.title')"
+                :description="t('app.home.testimonials.guomeiqing.description')"
+              >
                 <template #avatar>
                   <a-avatar :src="guomeiqing" />
                 </template>
@@ -225,11 +196,12 @@ export default defineComponent({
   },
   setup() {
     const copied = ref(false);
-    const { isMobile } = useInjectGlobalConfig();
+    const { isMobile, t } = useInjectGlobalConfig();
     const carouselStyle = computed(() => {
       return isMobile.value ? { width: '100vw' } : { width: '560px' };
     });
     return {
+      t,
       scott,
       liangxiao,
       dasheng,
@@ -257,6 +229,7 @@ export default defineComponent({
   font-size: 30px;
   padding: 0 0 10px;
   color: var(--surely-table-text-color);
+  text-align: center;
 }
 .highlight {
   color: #1677ff;

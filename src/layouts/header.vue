@@ -36,7 +36,7 @@
             <a-menu-item key="doc"><router-link to="/doc/guide">Doc</router-link></a-menu-item>
             <a-menu-item key="api"><router-link to="/doc/api">API</router-link></a-menu-item>
             <a-menu-item key="Pricing">
-              <router-link to="/pricing">{{ isZhCN ? '授权' : 'Pricing' }}</router-link>
+              <router-link to="/pricing">{{ t('app.header.pricing') }}</router-link>
             </a-menu-item>
             <a-menu-item key="Github">
               <a href="https://github.com/surely-vue/table" target="_blank">Github</a>
@@ -49,7 +49,7 @@
           <a-menu-item key="doc"><router-link to="/doc/guide">Doc</router-link></a-menu-item>
           <a-menu-item key="api"><router-link to="/doc/api">API</router-link></a-menu-item>
           <a-menu-item key="Pricing">
-            <router-link to="/pricing">{{ isZhCN ? '授权' : 'Pricing' }}</router-link>
+            <router-link to="/pricing">{{ t('app.header.pricing') }}</router-link>
           </a-menu-item>
           <a-menu-item key="Github">
             <a href="https://github.com/surely-vue/table" target="_blank">Github</a>
@@ -59,7 +59,7 @@
       <a-button size="small" class="mr-5" @click="globalConfig.changeLocale(!isZhCN)">
         {{ isZhCN ? 'English' : '中文' }}
       </a-button>
-      <a-tooltip title="暗黑主题" placement="bottom">
+      <a-tooltip :title="t('app.header.theme')" placement="bottom">
         <span
           class="w-16px h-16px flex theme-icon cursor-pointer"
           @click="() => changeTheme(theme === 'light' ? 'dark' : 'light')"
@@ -117,9 +117,10 @@ export default defineComponent({
     const globalConfig = useInjectGlobalConfig();
     const { theme, changeTheme } = inject('themeMode', {
       theme: ref('light'),
-      changeTheme: (t: any) => {},
+      changeTheme: (_t: any) => {},
     });
     return {
+      t: globalConfig.t,
       isZhCN: globalConfig.isZhCN,
       isMobile: globalConfig.isMobile,
       globalConfig,

@@ -1,6 +1,6 @@
 <template>
   <a-menu
-    v-model:openKeys="openKeys"
+    v-model:open-keys="openKeys"
     mode="inline"
     :selected-keys="[selectedKey]"
     :style="{ height: '100%', borderRight: 0 }"
@@ -13,13 +13,13 @@
           {{ isZhCN ? '简介' : 'Introduction' }}
         </router-link>
       </a-menu-item>
-      <a-menu-item :key="`/doc/guide#${isZhCN ? '快速开始' : 'Start'}`">
-        <router-link :to="`/doc/guide#${isZhCN ? '快速开始' : 'Start'}`">
+      <a-menu-item :key="`/doc/guide#${isZhCN ? '快速开始' : 'quick-start'}`">
+        <router-link :to="`/doc/guide#${isZhCN ? '快速开始' : 'quick-start'}`">
           {{ isZhCN ? '快速开始' : 'Getting Started' }}
         </router-link>
       </a-menu-item>
-      <a-menu-item :key="`/doc/guide#${isZhCN ? '常见问题' : 'FAQ'}`">
-        <router-link :to="`/doc/guide#${isZhCN ? '常见问题' : 'FAQ'}`">
+      <a-menu-item :key="`/doc/guide#${isZhCN ? '常见问题' : 'faq'}`">
+        <router-link :to="`/doc/guide#${isZhCN ? '常见问题' : 'faq'}`">
           {{ isZhCN ? '常见问题' : 'FAQ' }}
         </router-link>
       </a-menu-item>

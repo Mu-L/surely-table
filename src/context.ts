@@ -1,5 +1,4 @@
-import type { Ref } from 'vue';
-import type { InjectionKey } from 'vue';
+import type { InjectionKey, Ref } from 'vue';
 import { inject, provide } from 'vue';
 
 export interface GlobalConfig {
@@ -9,6 +8,7 @@ export interface GlobalConfig {
   responsive: Ref<null | 'narrow' | 'crowded'>;
   blocked: Ref<boolean>;
   changeLocale: (zh: boolean) => void;
+  t: (key: string) => string;
 }
 
 const GLOBAL_CONFIG: InjectionKey<GlobalConfig> = Symbol('globalConfig');
