@@ -59,7 +59,7 @@ export default defineComponent({
     watch(hashPriority, () => {
       location.reload();
     });
-    const isZhCN = ref(!localStorage.getItem('en-US'));
+    const isZhCN = ref(i18n.locale.value === 'zh-CN');
     const globalConfig = {
       isMobile,
       responsive,
@@ -68,7 +68,9 @@ export default defineComponent({
       blocked: ref(false),
       changeLocale: zh => {
         isZhCN.value = zh;
-        localStorage.setItem('en-US', !zh ? 'true' : '');
+        const locale = zh ? 'zh-CN' : 'en-US';
+        localStorage.setItem('locale', locale);
+        i18n.locale.value = locale;
       },
       t: i18n.t,
     };
