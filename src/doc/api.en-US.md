@@ -41,6 +41,7 @@
 | bodyCell | custom body cell by slot | v-slot:bodyCell="{text, record, index, column, openEditor(4.0.3), closeEditor(4.0.3)}" | - |  |
 | customFilterDropdown | Customized filter overlay，need set `column.customFilterDropdown` | v-slot:customFilterDropdown="[FilterDropdownProps](#filterdropdownprops)" | - |  |
 | customFilterIcon | Customized filter icon | v-slot:customFilterIcon="{filtered, column}" | - |  |
+| customHeaderCheckbox | Customized header checkbox | v-slot:customHeaderCheckbox="[CustomHeaderCheckboxProps](#CustomHeaderCheckboxProps)" | - | 5.0.14 |
 | emptyText | Customize the display content when empty data | v-slot:emptyText | - |  |
 | summary | Summary content | v-slot:summary | - |  |
 | summaryFixed | fixed summmary content | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
@@ -258,6 +259,17 @@ export interface MenuPopupArg<ColumnT> {
 
 ```ts
 export type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+```
+
+### CustomHeaderCheckboxProps
+
+```ts
+export interface CustomHeaderCheckboxProps {
+  prefixCls: string;
+  indeterminate: boolean;
+  checked: boolean;
+  disabled: boolean;
+}
 ```
 
 ### CellTooltip

@@ -12,6 +12,19 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.0.14
+
+- 🌟 Add customHeaderCheckbox slot for custom header checkbox
+- 🐞 Fix row height calculation error when autoHeight is enabled
+
+## 5.0.12 / 5.0.13
+
+- 🐞 Fix row height calculation error when merging rows in autoHeight
+
+## 5.0.10
+
+- 🐞 Fix watermark mask issue
+
 ## 5.0.9
 
 - 🐞 Fix HeaderCellTitle custom element update rendering issue

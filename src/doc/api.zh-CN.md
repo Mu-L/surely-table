@@ -66,6 +66,7 @@ setConfig(config: {
 | customCell | 设置单元格属性, column 如配置了 `customCell`, 优先使用 column.customCell | Function(obj: {record: any; rowIndex: number; column: ColumnType}) | - |  |
 | customFilterDropdown | 自定义筛选菜单，需要配合 `column.customFilterDropdown` 使用 | v-slot:customFilterDropdown="[FilterDropdownProps](#filterdropdownprops)" | - |  |
 | customFilterIcon | 自定义筛选图标 | v-slot:customFilterIcon="{filtered, column}" | - |  |
+| customHeaderCheckbox | 自定义表头复选框 | v-slot:customHeaderCheckbox="[CustomHeaderCheckboxProps](#CustomHeaderCheckboxProps)" | - | 5.0.14 |
 | emptyText | 自定义空数据时的显示内容 | v-slot:emptyText | - |  |
 | summary | 总结栏 | v-slot:summary | - |  |
 | summaryFixed | 固定总结栏 | boolean \| 'top'（2.4.6） \| 'bottom' | - |  |
@@ -516,6 +517,17 @@ interface FilterDropdownProps {
   filters?: ColumnFilterItem[];
   visible: boolean;
   column: ColumnType;
+}
+```
+
+### CustomHeaderCheckboxProps
+
+```ts
+export interface CustomHeaderCheckboxProps {
+  prefixCls: string;
+  indeterminate: boolean;
+  checked: boolean;
+  disabled: boolean;
 }
 ```
 
