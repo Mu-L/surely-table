@@ -23,7 +23,11 @@ Table with editable cells.
       <template v-if="column.dataIndex === 'name'">
         <div class="editable-cell">
           <div v-if="editableData[record.key]" class="editable-cell-input-wrapper">
-            <a-input v-model:value="editableData[record.key].name" @pressEnter="save(record.key)" />
+            <a-input
+              v-model:value="editableData[record.key].name"
+              @mousedown.stop
+              @pressEnter="save(record.key)"
+            />
             <check-outlined class="editable-cell-icon-check" @click="save(record.key)" />
           </div>
           <div v-else class="editable-cell-text-wrapper">
