@@ -12,6 +12,10 @@
 
 > Note: The detailed changelog below is currently in Chinese. We are working on translating it.
 
+## 5.0.15
+
+- 🐞 Fix sub-table responsiveness issue
+
 ## 5.0.14
 
 - 🌟 Add customHeaderCheckbox slot for custom header checkbox
